@@ -4,10 +4,26 @@ def cadastrar_cliente():
     print("================================")
     print("Cadastrar cliente")
     print("================================")
+    print("")
 
     while True:
         codigo = input("Código do cliente: ")
-        
+
+        if codigo == "0":
+            print()
+            print("Você realmente quer cancelar o cadastro?")
+            print()
+            opcao = input("Digite 'S' para confirmar ou 'N' para continuar: ").upper()
+
+            if opcao == "S":
+                print()
+                print("Cadastro de cliente cancelado.")
+                print()
+                return
+
+            else:
+                continue
+
         if not codigo.isdigit():
             print()
             print("Código inválido.")
@@ -56,7 +72,6 @@ def cadastrar_cliente():
             print("Digite novamente.")
             print()
 
-
     endereco = input("Endereço: ").upper()
 
     cliente = {
@@ -65,7 +80,7 @@ def cadastrar_cliente():
         "contato": contato,
         "telefone": telefone,
         "ativo": True,
-        "endereco": endereco
+        "endereco": endereco,
     }
 
     clientes.append(cliente)
@@ -73,6 +88,64 @@ def cadastrar_cliente():
     print()
     print(f"Cliente: {nome} código: {codigo} foi cadastrado com sucesso!")
     print()
+
+
+def listar_clientes():
+    print("================================")
+    print("Lista de Clientes")
+    print("================================")
+    print()
+    for cliente in clientes:
+        print(f"Código: {cliente['codigo']}")
+        print(f"Razão Social: {cliente['nome']}")
+        print(f"Nome do Responsável: {cliente['contato']}")
+        print(f"Telefone: {cliente['telefone']}")
+        print(f"Endereço: {cliente['endereco']}")
+        print(f"Ativo: {'Sim' if cliente['ativo'] else 'Não'}")
+        print("--------------------------------")
+
+
+def consultar_cliente():
+
+    while True:
+        codigo = input("Consultar Código: ")
+
+        for cliente in clientes:
+            if cliente["codigo"] == codigo:
+                print()
+                print(f"Código: {cliente['codigo']}")
+                print(f"Razão Social: {cliente['nome']}")
+                print(f"Nome do Responsável: {cliente['contato']}")
+                print(f"Telefone: {cliente['telefone']}")
+                print(f"Endereço: {cliente['endereco']}")
+                print(f"Ativo: {'Sim' if cliente['ativo'] else 'Não'}")
+                print()
+
+                print("================================")
+                print()
+
+                while True:
+                    opcao = input(
+                        "Digite 1 para consultar outro cliente ou 0 para voltar: \n"
+                    )
+                    print()
+
+                    if opcao == "0":
+                        return
+
+                    elif opcao == "1":
+                        break
+
+                break
+
+        else:
+            print()
+            print(
+                "Cliente não encontrado, por favor \n"
+                "digite novamente o código do cliente."
+            )
+            print()
+
 
 def menu_clientes():
     while True:
@@ -95,19 +168,23 @@ def menu_clientes():
         if opcao == "1":
             cadastrar_cliente()
             print()
+
         elif opcao == "2":
-            print("Consultar cliente")
-        elif opcao == "3":
-            print("================================")
-            print("Lista de Clientes")
-            print("================================")
+            consultar_cliente()
             print()
-            print(clientes)
+
+        elif opcao == "3":
+            listar_clientes()
+            print()
+
         elif opcao == "4":
             print("Alterar cliente")
+
         elif opcao == "5":
             print("Desativar cliente")
+
         elif opcao == "0":
             break
+
         else:
             print("Ops... Essa opção não existe.")
