@@ -37,13 +37,13 @@ O projeto será desenvolvido de forma incremental, começando por uma versão si
 - [x] Validação de código de cliente
 - [x] Prevenção de códigos duplicados
 - [x] Normalização básica de telefones
+- [x] Listagem de clientes
+- [x] Consulta de clientes
+- [x] Alteração de clientes
+- [x] Ativação e desativação de clientes
 
 ### Próximos passos
 
-- [ ] Listagem de clientes
-- [ ] Consulta de clientes
-- [ ] Alteração de clientes
-- [ ] Desativação de clientes
 - [ ] Cadastro de produtos
 - [ ] Gerenciamento de disponibilidade
 - [ ] Cadastro de pedidos
